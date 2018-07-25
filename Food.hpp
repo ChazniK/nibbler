@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Snake.hpp                                          :+:      :+:    :+:   */
+/*   Food.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 12:03:31 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 18:37:38 by ckatz            ###   ########.fr       */
+/*   Created: 2018/07/25 17:45:26 by ckatz             #+#    #+#             */
+/*   Updated: 2018/07/25 18:43:08 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,24 @@
 
 #include <SFML/Graphics.hpp>
 
-class Snake
+class Food
 {
 	public:
-		
-		//Declaration of constructors and destructor for Snake class
-		Snake(void);
-		Snake(const Snake & src);
-		Snake(float startX, float startY);
-		~Snake(void);
 
-		sf::FloatRect		getPosition(void) const;
-		sf::RectangleShape	getShape(void) const;
-		void				moveUp(void);
-		void				moveDown(void);
-		void				moveLeft(void);
-		void				moveRight(void);
+		Food(void);
+		Food(float startX, float startY);
+		Food(const Food & src);
+		~Food(void);
+
+		sf::FloatRect		getPosition(void);
+		sf::RectangleShape	getShape(void);
 		void				update(void);
 
-		Snake operator=(Snake & rhs);
+		Food operator=(Food & rhs);
 
 	private:
 
 		sf::Vector2f		_position;
-		sf::RectangleShape	_snakeShape;
-		//speed in number of pixels per frame
-		float				_snakeSpeed = 0.3f;
+		sf::RectangleShape	_foodShape;
+
 };

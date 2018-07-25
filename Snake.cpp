@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Snake.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 12:03:50 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 12:41:10 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/07/25 18:49:10 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ Snake::Snake(void)
 
 }
 
-Snake::Snake(float startX, float, startY)
+Snake::Snake(float startX, float startY)
 {
+	this->_position.x = startX;
+	this->_position.y = startY;
 
+	this->_snakeShape.setSize(sf::Vector2f(10, 10));
+	this->_snakeShape.setPosition(this->_position);
 }
 
 Snake::~Snake(void)
@@ -27,35 +31,39 @@ Snake::~Snake(void)
 
 }
 
-FloatRect	Snake::getPosition(void) const
+sf::FloatRect		Snake::getPosition(void) const
 {
-
+	return this->_snakeShape.getGlobalBounds();
 }
 
-RectangleShape	Snake::getShape(void) const
+sf::RectangleShape	Snake::getShape(void) const
 {
 	return this->_snakeShape;
 }
 
 void	Snake::moveUp(void)
 {
-
+	this->_position.y -= 1;
 }
 
 void	Snake::moveDown(void)
 {
-
+	this->_position.y += 1;
 }
-
 
 void	Snake::moveLeft(void)
 {
-
+	this->_position.x -= 1;
 }
 
 void	Snake::moveRight(void)
 {
+	this->_position.x += 1;
+}
 
+void	Snake::update(void)
+{
+	this->_snakeShape.setPosition(this->_position);
 }
 
 Snake	Snake::operator=(Snake & rhs)
