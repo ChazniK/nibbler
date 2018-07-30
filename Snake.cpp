@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 12:03:50 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 18:49:10 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/07/30 15:04:41 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ sf::RectangleShape	Snake::getShape(void) const
 
 void	Snake::moveUp(void)
 {
-	this->_position.y -= 1;
+	this->_position.y -= _snakeSpeed;
 }
 
 void	Snake::moveDown(void)
 {
-	this->_position.y += 1;
+	this->_position.y += _snakeSpeed;
 }
 
 void	Snake::moveLeft(void)
 {
-	this->_position.x -= 1;
+	this->_position.x -= _snakeSpeed;
 }
 
 void	Snake::moveRight(void)
 {
-	this->_position.x += 1;
+	this->_position.x += _snakeSpeed;
 }
 
 void	Snake::update(void)
@@ -66,10 +66,10 @@ void	Snake::update(void)
 	this->_snakeShape.setPosition(this->_position);
 }
 
-Snake	Snake::operator=(Snake & rhs)
-{
-	if (this != &rhs)
-	{
-		*this = rhs;
-	}
-}
+// Snake	Snake::operator=(Snake & rhs)
+// {
+// 	if (this != &rhs)
+// 	{
+// 		*this = rhs;
+// 	}
+// }

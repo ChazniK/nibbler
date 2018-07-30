@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 12:03:31 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 18:37:38 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/07/30 14:57:56 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Snake
 
 		sf::FloatRect		getPosition(void) const;
 		sf::RectangleShape	getShape(void) const;
+		float				getXVelocity() const;
+		float				getYVelocity() const;
 		void				moveUp(void);
 		void				moveDown(void);
 		void				moveLeft(void);
@@ -39,5 +41,7 @@ class Snake
 		sf::Vector2f		_position;
 		sf::RectangleShape	_snakeShape;
 		//speed in number of pixels per frame
-		float				_snakeSpeed = 0.3f;
+		float				_snakeSpeed = 0.5f;
+		float				_xVelocity = 0.04f;
+		float				_yVelocity = 0.04f;
 };

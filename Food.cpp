@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 17:45:22 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 18:44:28 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/07/30 15:05:08 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void		Food::update(void)
 	return this->_foodShape.setPosition(this->_position);
 }
 
-Food	Food::operator=(Food & rhs)
-{
-	if (this != &rhs)
-	{
-		*this = rhs;
-	}
-}
+// Food	Food::operator=(Food & rhs)
+// {
+// 	if (this != &rhs)
+// 	{
+// 		*this = rhs;
+// 	}
+// }

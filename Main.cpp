@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:54:07 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/25 18:47:10 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/07/30 15:03:50 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 
 int		main(void)
 {
-	sf::RenderWindow	window(sf::VideoMode(400, 400), "Pong Game");
-	sf::RectangleShape	player(sf::Vector2f(20.0f, 20.0f));
+	int		width = 600;
+	int		height = 480;
 
-	//Creating the snake and food objects
-	Snake snake(400 / 2, 400 - 20);
-    Food food(400 / 2, 1);
+
+	sf::RenderWindow	window(sf::VideoMode(width, height), "Snake Game");
+
+	// //Creating the snake and food objects
+	Snake snake(width / 2, height - 20);
+    Food food(height / 2, 1);
 
 	while (window.isOpen())
 	{
@@ -53,7 +56,7 @@ int		main(void)
 		{
 			snake.moveRight();
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     	{
         	// quit...
 			window.close();
