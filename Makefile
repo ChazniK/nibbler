@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 10:26:13 by mafernan          #+#    #+#              #
-#    Updated: 2018/08/03 13:33:10 by mafernan         ###   ########.fr        #
+#    Updated: 2018/08/03 14:48:12 by ckatz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,11 @@ GLFW_DOWNLOAD=curl -Lo glfw-3.2.1.zip https://github.com/glfw/glfw/releases/down
 GLFW_SETUP=unzip -a glfw-3.2.1.zip && rm -rf glfw-3.2.1.zip && mv glfw-3.2.1 ./LIB3/glfw && cd ./LIB3/glfw && cmake . && make && make install
 
 all: checks SFML SDL GLFW
-	@clang++ -std=c++11 -Werror -Wextra -Wall srcs/main.cpp
+	@clang++ -std=c++11 -Werror -Wextra -Wall srcs/main.cpp -o $(NAME)
 	@echo "done!"
 
 new: SFML SDL GLFW
-	@clang++ -std=c++11 -Werror -Wextra -Wall srcs/main.cpp
+	@clang++ -std=c++11 -Werror -Wextra -Wall srcs/main.cpp -o $(NAME)
 	@echo "done!"
 
 SFML:
@@ -63,10 +63,10 @@ GLFW:
 re: clean all
 
 clean:
-	@rm -rf a.out bin/*
+	@rm -rf $(NAME) bin/*
 
 fclean:
-	@rm -rf LIB1/SFML LIB2/SDL2.framework LIB3/glfw a.out bin/*
+	@rm -rf LIB1/SFML LIB2/SDL2.framework LIB3/glfw $(NAME) bin/*
 
 checks:
 	@read -p "Is brew installed? Type Y or n " ans ; if [ $$ans == "Y" ] ; then echo "continuing" ; else echo "Please close this terminal and install brew before running make again" && exec zsh; fi
