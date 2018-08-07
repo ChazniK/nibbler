@@ -1,47 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Snake.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 12:03:31 by ckatz             #+#    #+#             */
-/*   Updated: 2018/07/30 14:57:56 by ckatz            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#pragma once
+#ifndef SNAKE_HPP
+#define SNAKE_HPP
 
 #include <SFML/Graphics.hpp>
 
-class Snake
+struct SnakeSegment
+{
+	SnakeSegment(int x, int y) : position(x,y){}
+	sf::Vector2i position;
+};
+
+using SnakeContainer = std::vector<SnakeSegment>;
+
+enum class Direction{ None, Up, Down, Left, Right };
+
+class	Snake
 {
 	public:
-		
-		//Declaration of constructors and destructor for Snake class
-		Snake(void);
-		Snake(const Snake & src);
-		Snake(float startX, float startY);
-		~Snake(void);
 
-		sf::FloatRect		getPosition(void) const;
-		sf::RectangleShape	getShape(void) const;
-		float				getXVelocity() const;
-		float				getYVelocity() const;
-		void				moveUp(void);
-		void				moveDown(void);
-		void				moveLeft(void);
-		void				moveRight(void);
-		void				update(void);
-
-		Snake operator=(Snake & rhs);
-
+		Snake(int l_blockSize);
+		~Snake();
+		// Helper methods.
+		void		SetDirection(Direction l_dir);
+		Direction	GetDirection();
+		int			GetSpeed();
+		sf::Vector2i	GetPosition();
+		int			GetLives();
+		int			GetScore();
+		void		IncreaseScore();
+		bool		HasLost();
+		void		Lose(); // Handle losing here.
+		void		ToggleLost();
+		void		Extend(); // Grow the snake.
+		void		Reset(); // Reset to starting position.
+		void		Move(); // Movement method.
+		void		Tick(); // Update method.
+		void		Cut(int l_segments); // Method for cutting snake.
+		void		Render(sf::RenderWindow& l_window);
+	
 	private:
 
-		sf::Vector2f		_position;
-		sf::RectangleShape	_snakeShape;
-		//speed in number of pixels per frame
-		float				_snakeSpeed = 0.5f;
-		float				_xVelocity = 0.04f;
-		float				_yVelocity = 0.04f;
+		void		CheckCollision(); // Checking for collisions.
+		SnakeContainer m_snakeBody; // Segment vector.
+		int			m_size; // Size of the graphics.
+		Direction	m_dir; // Current direction.
+		int			m_speed; // Speed of the snake.
+		int			m_lives; // Lives.
+		int			m_score; // Score.
+		bool		m_lost; // Losing state.
+		sf::RectangleShape m_bodyRect; // Shape used in rendering.
 };
+
+#endif
