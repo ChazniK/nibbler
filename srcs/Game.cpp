@@ -14,8 +14,6 @@ Game::~Game()
 
 }
 
-
-
 void	Game::HandleInput()
 {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)	&& m_snake.GetDirection() != Direction::Down)

@@ -25,8 +25,6 @@ class	Snake
 		Direction	GetDirection();
 		int			GetSpeed();
 		sf::Vector2i	GetPosition();
-		int			GetLives();
-		int			GetScore();
 		void		IncreaseScore();
 		bool		HasLost();
 		void		Lose(); // Handle losing here.
@@ -35,7 +33,6 @@ class	Snake
 		void		Reset(); // Reset to starting position.
 		void		Move(); // Movement method.
 		void		Tick(); // Update method.
-		void		Cut(int l_segments); // Method for cutting snake.
 		void		Render(sf::RenderWindow& l_window);
 	
 	private:
@@ -45,8 +42,6 @@ class	Snake
 		int			m_size; // Size of the graphics.
 		Direction	m_dir; // Current direction.
 		int			m_speed; // Speed of the snake.
-		int			m_lives; // Lives.
-		int			m_score; // Score.
 		bool		m_lost; // Losing state.
 		sf::RectangleShape m_bodyRect; // Shape used in rendering.
 };

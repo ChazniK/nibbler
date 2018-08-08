@@ -21,8 +21,6 @@ void	Snake::Reset()
 	m_snakeBody.push_back(SnakeSegment(5,5));
 	SetDirection(Direction::None); // Start off still.
 	m_speed = 15;
-	m_lives = 3;
-	m_score = 0;
 	m_lost = false;
 }
 
@@ -43,7 +41,12 @@ int		Snake::GetSpeed()
 
 sf::Vector2i Snake::GetPosition()
 {
-	return (!m_snakeBody.empty() ? m_snakeBody.front().position : sf::Vector2i(1,1));
+	// return (!m_snakeBody.empty() ? m_snakeBody.front().position : sf::Vector2i(1,1));
+	if (m_snakeBody.front().position)
+	{
+		return !m_snakeBody.empty();
+	}
+	return sf::Vector2i(1,1);
 }
 
 int		Snake::GetLives()
@@ -177,23 +180,9 @@ void	Snake::CheckCollision()
 		if(itr->position == head.position)
 		{
 			int segments = m_snakeBody.end() - itr;
-			Cut(segments);
+			//Exit condition
 			break;
 		}
-	}
-}
-
-void	Snake::Cut(int l_segments)
-{
-	for (int i = 0; i < l_segments; ++i)
-	{
-		m_snakeBody.pop_back();
-	}
-	--m_lives;
-	if (!m_lives)
-	{ 
-		Lose(); 
-		return; 
 	}
 }
 
