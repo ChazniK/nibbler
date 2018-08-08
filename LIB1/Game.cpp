@@ -1,5 +1,6 @@
 
 #include "Game.hpp"
+#include <iostream>
 
 Game::Game(): m_window("Snake", sf::Vector2u(800, 600)),
 	m_snake(m_world.GetBlockSize()), m_world(sf::Vector2u(800,600))

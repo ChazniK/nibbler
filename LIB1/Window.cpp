@@ -28,7 +28,7 @@ void	Window::Setup(const std::string & l_title, const sf::Vector2u& l_size)
 void	Window::Create()
 {
 	auto style = (m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
-	m_window.create(sf::VideoMode(m_windowSize.x, m_windowSize.y), m_windowTitle, style);
+	m_window.create(sf::VideoMode(m_windowSize.x, m_windowSize.y, 32), m_windowTitle, style);
 }
 
 void	Window::Destroy()
