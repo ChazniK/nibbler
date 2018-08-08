@@ -3,38 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   Game.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 16/49/38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/06 17:29:46 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/07 13:40:47 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/07 16:41:23 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		GAME_HPP
-# define	GAME_HPP
+#ifndef GAME_HPP
+#define GAME_HPP
 
-# include <iostream>
-# include <dlfcn.h>
-# include "Error.hpp"
+#include <SFML/Graphics.hpp>
 
-class Game {
+#include "Window.hpp"
+#include "World.hpp"
+#include "Snake.hpp"
+
+class	Game
+{
 	public:
-		Game();
-		Game(Game const & src);
-		~Game();
-		Game & operator=(Game const & src);
 
-		std::string		windowSettings( void );
-		std::string		startLibrary( void );
-		bool	validLibrary(std::string input);
-		int		getHeight( void );
-		int		getWidth( void );
-		bool	isDigits(const std::string & str);
-		void	runNibbler( void );
+		Game();
+		~Game();
+
+		void	HandleInput();
+		void	Update();
+		void	Render();
+
+		sf::Time GetElapsed();
+		void	RestartClock();
+
+		Window*	GetWindow();
 
 	private:
-		int		_width;
-		int		_height;
+
+		Window	m_window;
+		sf::Clock m_clock;
+		float	m_elapsed;
+
+		World m_world;
+		Snake m_snake;
+
 };
 
 #endif

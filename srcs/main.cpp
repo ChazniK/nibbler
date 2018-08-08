@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Main.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
+/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 08:04:59 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/08 08:12:24 by ckatz            ###   ########.fr       */
+/*   Created: 2018/07/25 12:34:22 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/08 09:59:06 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <SFML/Graphics.hpp>
-#include "Game.hpp"
+#include "main.hpp"
 
-int	main(int argc, char** argv)
+int	main( void )
 {
-	// Program entry point.
-	Game game; // Creating our game object.
-
-	while(!game.GetWindow()->IsDone())
-	{
-		// Game loop.
-		game.HandleInput();
-		game.Update();
-		game.Render();
-		game.RestartClock();
-	}
+	Game	game;
+	
+	game.runNibbler();
 	return (0);
 }

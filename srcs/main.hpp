@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface.cpp                                      :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 13:10:42 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/08 10:23:32 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/03 13:41:15 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/06 18:08:38 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAIN_HPP
+# define MAIN_HPP
+
 #include "Game.hpp"
-#include <iostream>
 
-extern "C" void	test(void)
-{
-	std::cout << "start" << std::endl;
-	// Program entry point.
-	Game game; // Creating our game object.
-
-	while(!game.GetWindow()->IsDone())
-	{
-		// Game loop.
-		game.HandleInput();
-		game.Update();
-		game.Render();
-		game.RestartClock();
-	}
-	std::cout << "closed" << std::endl;
-}
+#endif
