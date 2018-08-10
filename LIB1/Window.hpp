@@ -11,6 +11,7 @@ class	Window
 
 		Window();
 		Window(const std::string& l_title,const sf::Vector2u& l_size);
+		Window & operator=(Window const & src);
 		~Window();
 
 		void				BeginDraw(); // Clear the window.
