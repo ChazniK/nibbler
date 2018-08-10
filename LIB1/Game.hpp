@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:40:47 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/07 16:41:23 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/10 18:23:09 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Game
 		void	HandleInput();
 		void	Update();
 		void	Render();
+		void	CreateWindow();
 
 		sf::Time GetElapsed();
 		void	RestartClock();
