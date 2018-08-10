@@ -15,6 +15,10 @@ Game::~Game()
 
 }
 
+void	Game::CreateWindow() {
+	m_window.GetRenderWindow()->create(sf::VideoMode(800, 600, 32), "Snake");
+}
+
 void	Game::HandleInput()
 {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)	&& m_snake.GetDirection() != Direction::Down)
@@ -47,7 +51,7 @@ void		Game::RestartClock()
 
 Window*		Game::GetWindow()
 {
-	return &m_window; 
+	return (& m_window); 
 }
 
 void	Game::Update()
@@ -67,6 +71,7 @@ void	Game::Update()
 
 void	Game::Render()
 {
+	CreateWindow();
 	m_window.BeginDraw();
 	// Render here.
 	m_world.Render(*m_window.GetRenderWindow());
