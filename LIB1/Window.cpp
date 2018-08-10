@@ -16,6 +16,14 @@ Window::~Window()
 	Destroy(); 
 }
 
+Window & Window::operator=(Window const & src) {
+	if (this != &src)
+    {
+		*this = src;
+    }
+	return (*this);
+}
+
 void	Window::Setup(const std::string & l_title, const sf::Vector2u& l_size)
 {
 	m_windowTitle = l_title;
