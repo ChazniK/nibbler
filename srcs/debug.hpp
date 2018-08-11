@@ -1,50 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.hpp                                           :+:      :+:    :+:   */
+/*   debug.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/07 13:40:47 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/11 12:38:43 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/11 11:49:37 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/11 12:13:24 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef DEBUG_CPP
+# define DEBUG_CPP
 
-#include <SFML/Graphics.hpp>
+# include <iostream>
 
-#include "Window.hpp"
-#include "World.hpp"
-#include "Snake.hpp"
-
-class	Game
-{
+class Debug {
 	public:
+		Debug( void ) {};
+		~Debug( void ) {};
 
-		Game();
-		~Game();
-
-		void	HandleInput();
-		void	Update();
-		void	Render();
-		void	CreateWindow();
-
-		sf::Time GetElapsed();
-		void	RestartClock();
-
-		Window*	GetWindow();
-
-	private:
-
-		Window	m_window;
-		sf::Clock m_clock;
-		float	m_elapsed;
-
-		World m_world;
-		Snake m_snake;
-
+		static void	print(std::string string, bool flag) {
+			std::string	RED = "\033[1;31m";
+			std::string	RESET = "\033[0m";
+			if (flag == true)
+				std::cout << RED << string << RESET << std::endl;
+		};
 };
 
 #endif

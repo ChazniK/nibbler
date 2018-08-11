@@ -1,22 +1,26 @@
 
 #include "Game.hpp"
+#include "../srcs/debug.hpp"
 #include <iostream>
 
-Game::Game(): m_window("Snake", sf::Vector2u(800, 600)),
+Game::Game(): m_window("Snake", sf::Vector2u(800, 600)), 
 	m_snake(m_world.GetBlockSize()), m_world(sf::Vector2u(800,600))
 {
+	Debug::print("Enter game object constructor", true);
+	CreateWindow();
 	m_clock.restart();
 	srand(time(nullptr));
 	m_elapsed = 0.0f;
+	Debug::print("End of game object constructor", true);
 }
 
 Game::~Game()
 {
-
+	Debug::print("Enter game object deconstructor", true);
 }
 
 void	Game::CreateWindow() {
-	m_window.GetRenderWindow()->create(sf::VideoMode(800, 600, 32), "Snake");
+	m_window.GetRenderWindow()->create(sf::VideoMode(800, 600, 32), "Snake", sf::Style::Default);
 }
 
 void	Game::HandleInput()
@@ -71,11 +75,16 @@ void	Game::Update()
 
 void	Game::Render()
 {
-	CreateWindow();
-	m_window.BeginDraw();
+//	Debug::print("Entered render mode", true);
+	// get the current frame to start the next one on a clean canvas
+	this->m_window.GetRenderWindow()->clear(sf::Color::Black);
 	// Render here.
-	m_world.Render(*m_window.GetRenderWindow());
-	m_snake.Render(*m_window.GetRenderWindow());
-	m_window.EndDraw();
+	// give the window class to world to draw the correct borders
+	this->m_world.Render(*m_window.GetRenderWindow());
+	// give the window class to render the correct snake in the window class
+	this->m_snake.Render(*m_window.GetRenderWindow());
+	// display the current "frame" after setting up the window world properly
+	this->m_window.GetRenderWindow()->display();
+//	Debug::print("Exit render mode", true);
 }
 
