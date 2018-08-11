@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:28:19 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/11 14:13:39 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/11 14:40:37 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,11 @@ class IGraphics
 		virtual void		drawSnake(void) = 0;
 		virtual void		drawFood(void) = 0;
 		virtual void		handleInput(int key) = 0;
+		virtual KeyInput	getInput(void) = 0;
 		virtual int			getWidth(void) = 0;
 		virtual int			getHeight(void) = 0;
 		virtual void		destroyWindow(void) = 0;
-
-		KeyInput			getPlayerInput(void) { return _playerInput; }
-
-		~IGraphics(void);
-
-	private:
-
-		int					_width;
-		int					_height;
-		KeyInput			_playerInput;
+		virtual 			~IGraphics(void) = 0;
 };
 
 #endif
