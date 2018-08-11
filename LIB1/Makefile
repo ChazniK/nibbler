@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 10:14:37 by mafernan          #+#    #+#              #
-#    Updated: 2018/08/08 11:37:41 by mafernan         ###   ########.fr        #
+#    Updated: 2018/08/11 18:14:59 by ckatz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FRAMEWORK_PATH= -F SFML/Frameworks
 
 INCL= -I includes -I SFML/include -I SFML/lib
 
-SRCS= Game.cpp Snake.cpp Window.cpp World.cpp main.cpp
+SRCS= Game.cpp Snake.cpp Food.cpp main.cpp
 
 all:
 	@echo "Compiling dylib for SFML"

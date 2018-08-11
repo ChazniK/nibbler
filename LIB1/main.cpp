@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 13:10:42 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/08 11:32:47 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/11 15:11:44 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 		game.Update();
 		game.Render();
 		game.RestartClock();
-	}
+	// }
 	std::cout << "closed" << std::endl;
 }*/
 
@@ -35,8 +35,9 @@ int		main(void)
 	std::cout << "start" << std::endl;
 	// Program entry point.
 	Game game; // Creating our game object.
+	sf::Window window(sf::VideoMode(800, 600), "Snake");
 
-	while(!game.GetWindow()->IsDone())
+	while(1)
 	{
 		// Game loop.
 		game.HandleInput();

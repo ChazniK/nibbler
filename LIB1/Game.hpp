@@ -3,47 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   Game.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/07 13:40:47 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/07 16:41:23 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/11 16:09:26 by ckatz             #+#    #+#             */
+/*   Updated: 2018/08/11 18:27:49 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <SFML/Graphics.hpp>
+#define WIDTH = 600
+#define HEIGHT = 400
+#define blockSize = 20
 
-#include "Window.hpp"
-#include "World.hpp"
-#include "Snake.hpp"
-
-class	Game
+struct Block
 {
-	public:
+	int		x;
+	int		y;
+	// int		blockSize;
 
-		Game();
-		~Game();
-
-		void	HandleInput();
-		void	Update();
-		void	Render();
-
-		sf::Time GetElapsed();
-		void	RestartClock();
-
-		Window*	GetWindow();
-
-	private:
-
-		Window	m_window;
-		sf::Clock m_clock;
-		float	m_elapsed;
-
-		World m_world;
-		Snake m_snake;
-
+	Block(int xPos, int yPos) : x(xPos), y(yPos) {}
+	Block(void);
 };
 
 #endif
