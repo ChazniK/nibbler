@@ -6,7 +6,7 @@
 #    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 10:26:13 by mafernan          #+#    #+#              #
-#    Updated: 2018/08/10 17:40:13 by mafernan         ###   ########.fr        #
+#    Updated: 2018/08/11 10:07:32 by mafernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,17 +27,17 @@ SRCS=srcs/main.cpp srcs/Error.cpp srcs/Game.cpp
 # ======= SFML ======= #
 SFML='SFML-clang.tar.gz'
 SFML_DIR='SFML-2.5.0-macOS-clang'
-DWNLD=sh -c '$$(curl -Lo $(SFML) https://www.sfml-dev.org/files/SFML-2.5.0-macOS-clang.tar.gz)'
-UNTAR=sh -c '$$(tar -xvzf $(SFML) && rm -rf $(SFML))'
+DWNLD=sh -c '$$(curl -Lo $(SFML) --progress-bar https://www.sfml-dev.org/files/SFML-2.5.0-macOS-clang.tar.gz)'
+UNTAR=sh -c '$$(tar -xzf $(SFML) && rm -rf $(SFML))'
 CR_MV=sh -c '$$(mv $(SFML_DIR) ./LIB1/SFML && cp -rf ./LIB1/SFML/extlibs/* ./LIB1/SFML/Frameworks/.)'
 
 
 # ======= SDL ======= #
-SDL_DOWNLOAD=curl -Lo SDL2 http://www.libsdl.org/release/SDL2-2.0.8.dmg;hdiutil attach SDL2;cp -R /Volumes/SDL2/SDL2.framework LIB2/.;hdiutil detach /Volumes/SDL2;rm -rf SDL2
+SDL_DOWNLOAD=curl -Lo SDL2 --progress-bar http://www.libsdl.org/release/SDL2-2.0.8.dmg;hdiutil attach SDL2;cp -R /Volumes/SDL2/SDL2.framework LIB2/.;hdiutil detach /Volumes/SDL2;rm -rf SDL2
 
 
 # ======= GLFW ======= #
-GLFW_DOWNLOAD=curl -Lo glfw-3.2.1.zip https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
+GLFW_DOWNLOAD=curl -Lo glfw-3.2.1.zip --progress-bar https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip
 GLFW_SETUP=unzip -a glfw-3.2.1.zip && rm -rf glfw-3.2.1.zip && mv glfw-3.2.1 ./LIB3/glfw && cd ./LIB3/glfw && cmake . && make && make install
 
 
