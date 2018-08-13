@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 16:58:03 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/12 17:44:30 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/13 11:50:36 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		Food::getYPos(void) const
 	return _yPos;
 }
 
-void	Food::spawnFood(void)
+void	Food::spawnFood()
 {
 	//width and height passed in from game class
 	int	maxX = (width / blockSize) - 2;
