@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/13 21:43:16 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/14 10:21:09 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ class Snake
 		Snake( const Snake & src );
 		~Snake( void );
 
-		std::vector<Block>	getSnake( void );
+		std::vector<Block>	getSnake( void ) const;
 		void				move( void );
 		void				extendSnake( void ); 
 		void				checkCollision( void );
-		Direction			getDirection( void );
+		Direction			getDirection( void ) const;
+		void				setDirection( Direction dir );
 		void				reset( void );
 
 		Snake & operator=(const Snake & src);
