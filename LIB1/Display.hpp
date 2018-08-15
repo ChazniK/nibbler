@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/15 15:55:04 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/15 20:56:12 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Display : public Interface
 		virtual Keys	getKey( void );
 		virtual void	Render( int foodX, int foodY, std::vector<Block> snake);
 		virtual bool	PollEvents( void );
-		virtual void	CloseWindow( void );
+		virtual bool	CloseWindow( void );
 		virtual void	BackGround( void );
 
 	private:

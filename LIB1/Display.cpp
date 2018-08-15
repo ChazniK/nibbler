@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 16:22:45 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/15 21:00:54 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@ Display::Display(void) {}
 // deconstructor
 Display::~Display(void) {}
 
-void	Display::CloseWindow( void )
+bool	Display::CloseWindow( void )
 {
-	this->_window.close();
+	if (this->_event.type == sf::Event::Closed)
+	{
+		return true;
+	}
+	else
+		return false;
 }
 
 // get the key inputs
@@ -28,9 +33,34 @@ Keys	Display::getKey(void)
 {
 	if (this->_event.type == sf::Keyboard::isPressed)
 	{
-		switch(this->_event.key.code)
+		int	keyCode = this->_event.key.code
+		switch(keyCode)
 		{
-			case
+			case keyCode.Up:
+				return Keys::UPA;
+				break;
+			case keyCode.Down:
+				return Keys::DOWNA;
+				break;
+			case keyCode.Left:
+				return Keys::LEFTA;
+				break;
+			case keyCode.Right:
+				return Keys::RIGHTA;
+				break;
+			case keyCode.Escape:
+				return Keys::ESC;
+				break;
+			case keyCode.F1
+				return Keys::F1
+				break;
+			case keyCode.F2
+				return Keys::F2
+				break;
+			case keyCode.F3
+				return Keys::F3
+				break;
+			return Keys::UNKNOWN;
 		}
 	}
 }
