@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/15 21:00:54 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/15 22:17:21 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,24 @@ bool	Display::PollEvents( void )
 {
 	sf::Event	event;
 	Debug::print("PollEvents function", true);
-	while (this->_window.isOpen())
+
+	if (this->_window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			this->_window.close();
+		getKey();
+		return true
+	}
+	else
+		return false;
+/*	while (this->_window.isOpen())
 	{
 		while (this->_window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				this->_window.close();
 		}
-	}
-	return true
+	}*/
 }
 
 // render the background & border
