@@ -26,8 +26,13 @@ void	Display::CloseWindow( void )
 // get the key inputs
 Keys	Display::getKey(void)
 {
-	Debug::print("getKey function", true);
-	return Keys::UPA;
+	if (this->_event.type == sf::Keyboard::isPressed)
+	{
+		switch(this->_event.key.code)
+		{
+			case
+		}
+	}
 }
 
 // get the events
@@ -43,7 +48,7 @@ bool	Display::PollEvents( void )
 				this->_window.close();
 		}
 	}
-	return true;
+	return true
 }
 
 // render the background & border

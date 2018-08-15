@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Display.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 15:49:43 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/15 15:55:04 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Display : public Interface
 	private:
 		int					_width;
 		int					_height;
+		sf::Event			_event;
 		sf::RenderWindow	_window;
 		sf::CircleShape		_apple;
 		sf::RectangleShape	_bounds[4];
