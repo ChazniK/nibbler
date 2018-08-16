@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 15:49:43 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 10:32:39 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Display : public Interface
 		sf::RenderWindow	_window;
 		sf::CircleShape		_apple;
 		sf::RectangleShape	_bounds[4];
-		int					_blockSize;
+		int					_blockSize = 16;
 };
 
 extern "C" Interface *	CreateDisplay(void);

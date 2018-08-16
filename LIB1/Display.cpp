@@ -6,17 +6,22 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 16:22:45 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 11:03:00 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Display.hpp"
 
 // constructor
-Display::Display(void) {}
+Display::Display(void)
+{
+}
 
 // deconstructor
-Display::~Display(void) {}
+Display::~Display(void)
+{
+	this->_window.close();
+}
 
 void	Display::CloseWindow( void )
 {
@@ -34,13 +39,12 @@ Keys	Display::getKey(void)
 bool	Display::PollEvents( void )
 {
 	sf::Event	event;
-	Debug::print("PollEvents function", true);
-	while (this->_window.isOpen())
+	if (this->_window.pollEvent(event))
 	{
-		while (this->_window.pollEvent(event))
+		if (event.type == sf::Event::Closed)
 		{
-			if (event.type == sf::Event::Closed)
-				this->_window.close();
+			Debug::print("closed window", true);
+			return false;
 		}
 	}
 	return true;
@@ -80,7 +84,6 @@ void	Display::BackGround( void )
 // render background/apple/snake/border
 void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 {
-	_window.create(sf::VideoMode(_width, _height, 32), "Snake", sf::Style::Close);
 	this->_window.clear(sf::Color(163, 159, 151));
 	// === Background === //
 	BackGround();
@@ -127,6 +130,7 @@ void	Display::Init(int width, int height)
 {
 	this->_width = width;
 	this->_height = height;
+	this->_window.create(sf::VideoMode(_width, _height, 32), "Snake", sf::Style::Close);
 }
 
 // return instance of display object.

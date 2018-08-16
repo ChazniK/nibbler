@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 16:51:33 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/14 16:05:51 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 10:32:49 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Food
 		Food &	operator=( const Food & rhs ); 
 
 	private:
-		int		blockSize = 20;
+		int		blockSize = 16;
 		int		_width;
 		int		_height;
 		int		_xPos;

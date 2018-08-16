@@ -6,7 +6,7 @@
 /*   By: mafernan   <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16/49/38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 16:16:40 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 11:04:03 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,10 +183,9 @@ void Game::runNibbler()
 		Interface *func	= factory.createLibrary(5);
 		func->Init(_width, _height);
 		// while snake is moving aka hasn't touched a wall
-		while (1)
+		while (func->PollEvents())
 		{
 			func->Render(this->food.getXPos(), this->food.getYPos(), this->snake.getSnake());
-			func->PollEvents();
 		//	snake.move();
 		//	if (func->EventHandler())
 		//	{
