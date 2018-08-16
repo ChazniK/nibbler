@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:55:00 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/16 11:07:55 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 12:28:07 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ Snake::Snake( const Snake & src )
 Snake::~Snake( void )
 {
 
+}
+
+void				Snake::Tick()
+{
+	if (getSnake().empty())
+	{
+		return;
+	}
+	if (_direction == Direction::NONE)
+	{
+		return;
+	}
+	move();
+	checkCollision();
 }
 
 std::vector<Block>	Snake::getSnake( void ) const

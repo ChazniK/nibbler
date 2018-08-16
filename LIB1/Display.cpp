@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 11:35:47 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 12:39:43 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ Keys	Display::getKey(void)
 // get the events
 bool	Display::PollEvents( void )
 {
+	Keys k;
 	
 	if (this->_window.pollEvent(this->_event))
 	{
@@ -92,7 +93,6 @@ bool	Display::PollEvents( void )
 			Debug::print("closed window", true);
 			return false;
 		}
-		getKey();
 		// if ((event.type == sf::Event::KeyPressed) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))) 
 		// {
 		// 	std::cout << "Up key pushed\n";

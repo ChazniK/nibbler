@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 11:26:10 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 12:45:18 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,18 +186,14 @@ void Game::runNibbler()
 		while (func->PollEvents())
 		{
 			func->Render(this->food.getXPos(), this->food.getYPos(), this->snake.getSnake());
-		//	snake.move();
-		//	if (func->EventHandler())
-		//	{
-		//		if (func->CloseWindow())
-		//			break;
-		//		if (func->KeyPress() == f1)
-		//		{
-		//			factory.deleteLibrary(func);
-		//			interface *func = factory.createLibrary("sdl.so",_width, _height);
-		//		}
-		//
-		//	}
+			if (func->getKey() == Keys::ESC)
+				break;
+			// if (func->getKey() == Keys::F1 || func->getKey() == Keys::F2 || func->getKey() == Keys::F3)
+			// {
+			// 	Debug::print("Libraries", true);
+			// 	func = factory.createLibrary(func->getKey());
+			// }
+		
 		}
 		factory.deleteLibrary(func);
 	}

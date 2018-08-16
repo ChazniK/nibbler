@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/14 15:45:56 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 12:26:00 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Snake
 		void				checkCollision( void );
 		Direction			getDirection( void ) const;
 		void				setDirection( Direction dir );
+		void				Tick( void );
 		void				reset( void );
 
 		Snake & operator=(const Snake & src);
