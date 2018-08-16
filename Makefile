@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 10:26:13 by mafernan          #+#    #+#              #
-#    Updated: 2018/08/14 15:42:31 by mafernan         ###   ########.fr        #
+#    Updated: 2018/08/16 15:01:12 by ckatz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,7 @@ GLFW_SETUP=unzip -a glfw-3.2.1.zip && rm -rf glfw-3.2.1.zip && mv glfw-3.2.1 ./L
 
 
 # ======= SET IT TO COMPILE ONLY WITH SFML / TEMPORARY ======= #
-all: SFML
-	@clang++ -std=c++11 -Werror -Wextra -Wall $(SRCS) -o $(NAME)
-	@echo "done!"
-
-new: SFML
+all: SFML SDL
 	@clang++ -std=c++11 -Werror -Wextra -Wall $(SRCS) -o $(NAME)
 	@echo "done!"
 

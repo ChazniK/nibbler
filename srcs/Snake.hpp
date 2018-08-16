@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/16 12:26:00 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 14:46:57 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <vector>
 #include "debug.hpp" 
+#include "Food.hpp"
+#include <time.h>
 
 enum Direction
 {
@@ -39,7 +41,7 @@ class Snake
 		void				checkCollision( void );
 		Direction			getDirection( void ) const;
 		void				setDirection( Direction dir );
-		void				Tick( void );
+		bool				Tick( Food & apple );
 		void				reset( void );
 
 		Snake & operator=(const Snake & src);

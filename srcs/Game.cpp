@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 12:45:18 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 14:50:23 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,11 +183,32 @@ void Game::runNibbler()
 		Interface *func	= factory.createLibrary(5);
 		func->Init(_width, _height);
 		// while snake is moving aka hasn't touched a wall
-		while (func->PollEvents())
+		
+		while (snake.Tick(this->food))
 		{
 			func->Render(this->food.getXPos(), this->food.getYPos(), this->snake.getSnake());
+			func->PollEvents();
 			if (func->getKey() == Keys::ESC)
 				break;
+			// i || func->getKey() == Keys::DOWNA || func->getKey() == Keys::LEFTA || func->getKey() == Keys::RIGHTA)
+			
+			if (func->getKey() == Keys::UPA)
+			{
+				snake.setDirection(Direction::UP);
+			}
+			if (func->getKey() == Keys::DOWNA)
+			{
+				snake.setDirection(Direction::DOWN);
+			}
+			if (func->getKey() == Keys::LEFTA)
+			{
+				snake.setDirection(Direction::LEFT);
+			}
+			if (func->getKey() == Keys::RIGHTA)
+			{
+				snake.setDirection(Direction::RIGHT);
+			}
+			
 			// if (func->getKey() == Keys::F1 || func->getKey() == Keys::F2 || func->getKey() == Keys::F3)
 			// {
 			// 	Debug::print("Libraries", true);

@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:55:00 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/16 12:28:07 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 14:49:43 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,31 @@ Snake::~Snake( void )
 
 }
 
-void				Snake::Tick()
+bool				Snake::Tick(Food & apple)
 {
+	// for (int i = 0; i < 100000; i++)
+
+	clock_t time_end;
+    time_end = clock() + 50 * CLOCKS_PER_SEC/1000;
+    while (clock() < time_end)
+    {
+    }
 	if (getSnake().empty())
 	{
-		return;
+		return false;
 	}
 	if (_direction == Direction::NONE)
 	{
-		return;
+		return true;
+	}
+	if (this->getSnake()[0].x == apple.getXPos() && this->getSnake()[0].y == apple.getYPos())
+	{
+		extendSnake();
+		apple.spawnFood();
 	}
 	move();
 	checkCollision();
+	return true;
 }
 
 std::vector<Block>	Snake::getSnake( void ) const
@@ -162,7 +175,7 @@ void				Snake::reset( void )
 	_snakeBody.push_back(Block(5,5));
 	_snakeBody.push_back(Block(5,4));
 	setDirection(Direction::NONE); // Start off still.
-	_speed = 15;
+	_speed = 5;
 }
 
 Snake & 			Snake::operator=(const Snake & src)

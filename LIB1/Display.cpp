@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 12:39:43 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 14:58:00 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 		_apple.setFillColor(sf::Color::Red);
 	}
 	texture.setRepeated(true);
-	_apple.setRadius(this->_blockSize - 1);
+	_apple.setRadius(this->_blockSize / 2);
 	_apple.setPosition(foodX * this->_blockSize, foodY * this->_blockSize);
 	_apple.setTexture(&texture);
 	this->_window.draw(_apple);
@@ -157,7 +157,7 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	sf::RectangleShape 	Body;
 	sf::Texture			headtex;
 	sf::Texture			bodytex;
-	Body.setSize(sf::Vector2f(this->_blockSize, this->_blockSize - 1));
+	Body.setSize(sf::Vector2f(this->_blockSize, this->_blockSize));
 	if (!headtex.loadFromFile("sprites/head.png") || !bodytex.loadFromFile("sprites/body.png"))
 	{
 		Debug::print("failed to load apple texture in sfml", true);
