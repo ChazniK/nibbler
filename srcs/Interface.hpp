@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Interface.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:40:11 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 15:53:43 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 11:17:13 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ enum Keys {
 	ESC,
 	F1,
 	F2,
-	F3
+	F3,
+	UNKNOWN
 };
 
 class Interface

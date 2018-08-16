@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Display.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 10:32:39 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 11:33:32 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Display : public Interface
 		virtual void	BackGround( void );
 
 	private:
+		sf::Event			_event;
 		int					_width;
 		int					_height;
 		sf::RenderWindow	_window;

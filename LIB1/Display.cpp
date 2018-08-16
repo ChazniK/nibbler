@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Display.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 11:03:00 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/16 11:35:47 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,74 @@ void	Display::CloseWindow( void )
 // get the key inputs
 Keys	Display::getKey(void)
 {
-	Debug::print("getKey function", true);
-	return Keys::UPA;
+	if (this->_event.type == sf::Event::KeyPressed)
+	{
+		int	keyCode = this->_event.key.code;
+		
+		if (keyCode == sf::Keyboard::Up)
+		{
+			std::cout << "Up\n";
+			return Keys::UPA;
+		}
+		else if (keyCode == sf::Keyboard::Down)
+		{
+			std::cout << "Down\n";
+			return Keys::DOWNA;
+		}
+		else if (keyCode == sf::Keyboard::Left)
+		{
+			std::cout << "Left\n";				
+			return Keys::LEFTA;
+		}
+		else if (keyCode == sf::Keyboard::Right)
+		{
+			std::cout << "Right\n";				
+			return Keys::RIGHTA;
+		}
+		else if (keyCode == sf::Keyboard::Escape)
+		{
+			std::cout << "Escape\n";				
+			return Keys::ESC;
+		}
+		else if (keyCode == sf::Keyboard::F1)
+		{
+			std::cout << "F1\n";				
+			return Keys::LEFTA;
+		}
+		else if (keyCode == sf::Keyboard::F2)
+		{
+			std::cout << "F2\n";				
+			return Keys::LEFTA;
+		}
+		else if (keyCode == sf::Keyboard::F3)
+		{
+			std::cout << "F3\n";				
+			return Keys::LEFTA;
+		}
+		else
+			return Keys::UNKNOWN;
+	}
+	return Keys::UNKNOWN;
 }
 
 // get the events
 bool	Display::PollEvents( void )
 {
-	sf::Event	event;
-	if (this->_window.pollEvent(event))
+	
+	if (this->_window.pollEvent(this->_event))
 	{
-		if (event.type == sf::Event::Closed)
+		if (this->_event.type == sf::Event::Closed)
 		{
 			Debug::print("closed window", true);
 			return false;
 		}
+		getKey();
+		// if ((event.type == sf::Event::KeyPressed) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))) 
+		// {
+		// 	std::cout << "Up key pushed\n";
+		// 	// return true;
+		// }
+		
 	}
 	return true;
 }
