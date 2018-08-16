@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 10:54:27 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 15:04:43 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 15:13:07 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Interface	*Factory::createLibrary(int libNum)
 
 	if (libNum == 5)
 		library = "../bin/sfml.so";
-	dl_handle = dlopen( "bin/sdl.so", RTLD_LAZY | RTLD_LOCAL );
+	dl_handle = dlopen( "bin/sfml.so", RTLD_LAZY | RTLD_LOCAL );
 	if ( !dl_handle )
 		dlerrorWrapper();
 	fn_pointer = (Interface*(*)(void)) dlsym(dl_handle, "CreateDisplay");

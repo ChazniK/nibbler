@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:55:00 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/16 14:49:43 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 15:35:57 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ Snake::Snake( const Snake & src )
 Snake::~Snake( void )
 {
 
+}
+
+void				Snake::GetWindow(int width, int height)
+{
+	this->_width = width / 16;
+	this->_height = height / 16;
 }
 
 bool				Snake::Tick(Food & apple)
@@ -142,7 +148,7 @@ void				Snake::extendSnake( void )
 
 void				Snake::checkCollision( void )
 {
-	if (_snakeBody.size() < 5)
+	if (_snakeBody.size() < 4)
 	{ 
 		return; 
 	}
@@ -151,10 +157,15 @@ void				Snake::checkCollision( void )
 	{
 		if(itr->x == head.x && itr->y == head.y)
 		{
-			//Exit condition
+			this->reset();
 			break;
-		}
+		}	
 	}
+	if (head.x <= 0 || head.y <= 0 || head.x >= _width - 1 || head.y >= _height - 1)
+	{
+		this->reset();
+	}
+ 
 }
 
 Direction			Snake::getDirection( void ) const

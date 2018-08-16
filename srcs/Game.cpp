@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 14:50:23 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/16 15:32:21 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ void Game::runNibbler()
 	(void)library;
 	this->food.init(_width, _height);
 	this->food.spawnFood();
+	snake.GetWindow(_width, _height);
 	snake.reset();
 	
 	try
@@ -194,6 +195,7 @@ void Game::runNibbler()
 			
 			if (func->getKey() == Keys::UPA)
 			{
+				// if (snake.getDirection() != Keys::DOWNA)
 				snake.setDirection(Direction::UP);
 			}
 			if (func->getKey() == Keys::DOWNA)
