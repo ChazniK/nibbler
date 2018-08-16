@@ -1,49 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Snake.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
+/*   Updated: 2018/08/16 14:46:57 by ckatz            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
-#include <SFML/Graphics.hpp>
+#include <vector>
+#include "debug.hpp" 
+#include "Food.hpp"
+#include <time.h>
 
-struct SnakeSegment
+enum Direction
 {
-	SnakeSegment(int x, int y) : position(x,y){}
-	sf::Vector2i position;
+	NONE,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
 };
 
-using SnakeContainer = std::vector<SnakeSegment>;
-
-enum class Direction{ None, Up, Down, Left, Right };
-
-class	Snake
+class Snake
 {
 	public:
 
-		Snake(int l_blockSize);
-		~Snake();
-		// Helper methods.
-		void		SetDirection(Direction l_dir);
-		Direction	GetDirection();
-		int			GetSpeed();
-		sf::Vector2i	GetPosition();
-		void		IncreaseScore();
-		bool		HasLost();
-		void		Lose(); // Handle losing here.
-		void		ToggleLost();
-		void		Extend(); // Grow the snake.
-		void		Reset(); // Reset to starting position.
-		void		Move(); // Movement method.
-		void		Tick(); // Update method.
-		void		Render(sf::RenderWindow& l_window);
-	
+		Snake( void );
+		Snake( const Snake & src );
+		~Snake( void );
+
+		std::vector<Block>	getSnake( void ) const;
+		void				move( void );
+		void				extendSnake( void ); 
+		void				checkCollision( void );
+		Direction			getDirection( void ) const;
+		void				setDirection( Direction dir );
+		bool				Tick( Food & apple );
+		void				reset( void );
+
+		Snake & operator=(const Snake & src);
+
 	private:
 
-		void		CheckCollision(); // Checking for collisions.
-		SnakeContainer m_snakeBody; // Segment vector.
-		int			m_size; // Size of the graphics.
-		Direction	m_dir; // Current direction.
-		int			m_speed; // Speed of the snake.
-		bool		m_lost; // Losing state.
-		sf::RectangleShape m_bodyRect; // Shape used in rendering.
+		std::vector<Block>	_snakeBody;
+		Direction			_direction;
+		float				_speed;
 };
 
 #endif

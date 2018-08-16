@@ -3,47 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   Game.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/07 13:40:47 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/07 16:41:23 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/16 11:41:43 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef		GAME_HPP
+# define	GAME_HPP
 
-#include <SFML/Graphics.hpp>
+# include <iostream>
+# include "Interface.hpp"
+# include "Factory.hpp"
+# include "Error.hpp"
+# include "Snake.hpp"
+# include "Food.hpp"
 
-#include "Window.hpp"
-#include "World.hpp"
-#include "Snake.hpp"
-
-class	Game
-{
+class Game {
 	public:
-
 		Game();
+		Game(Game const & src);
 		~Game();
+		Game & operator=(Game const & src);
 
-		void	HandleInput();
-		void	Update();
-		void	Render();
-
-		sf::Time GetElapsed();
-		void	RestartClock();
-
-		Window*	GetWindow();
+		std::string		windowSettings( void );
+		std::string		startLibrary( void );
+		bool	validLibrary(std::string input);
+		int		getHeight( void );
+		int		getWidth( void );
+		bool	isDigits(const std::string & str);
+		void	runNibbler( void );
+		Food	food;
+		Snake	snake;
+		Factory	factory;
 
 	private:
-
-		Window	m_window;
-		sf::Clock m_clock;
-		float	m_elapsed;
-
-		World m_world;
-		Snake m_snake;
-
+		int		_score;
+		int		_width;
+		int		_height;
 };
 
 #endif

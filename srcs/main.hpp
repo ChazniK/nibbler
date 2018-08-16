@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 12:34:22 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/11 12:13:57 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/03 13:41:15 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/06 18:08:38 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-int	main( void )
-{
-	Game	game;
-	
-	game.runNibbler();
-	return (0);
-}
+#include "Game.hpp"
+
+#endif

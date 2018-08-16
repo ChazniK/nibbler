@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Factor.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 12:34:22 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/11 12:13:57 by mafernan         ###   ########.fr       */
+/*   Created: 2018/08/13 14:55:56 by mafernan          #+#    #+#             */
+/*   Updated: 2018/08/14 16:08:04 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef FACTORY_HPP
+# define FACTORY_HPP
 
-int	main( void )
+# include <iostream>
+# include "Interface.hpp"
+# include <dlfcn.h>
+
+class Factory
 {
-	Game	game;
-	
-	game.runNibbler();
-	return (0);
-}
+	public:
+		Factory(void);
+		~Factory(void);
+
+		Interface	*createLibrary(int libNum);
+		void	deleteLibrary(Interface* & dlGraphics);
+		
+		Interface	*dlGraphics;
+};
+
+#endif
