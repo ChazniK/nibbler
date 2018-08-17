@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 09:14:19 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:06:04 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 
 class Game {
 	public:
-		Game();
-		Game(Game const & src);
-		~Game();
-		Game & operator=(Game const & src);
+		Game( void );
+		Game( Game const & src );
+		~Game( void );
+
+		Game & operator=( Game const & src );
 
 		int				windowSettings( void );
 		std::string		startLibrary( void );

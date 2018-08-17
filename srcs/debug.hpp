@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.cpp                                          :+:      :+:    :+:   */
+/*   debug.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 11:49:37 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/14 15:45:40 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:05:51 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ struct Block
 {
 	int x;
 	int y;
-	Block(int xPos, int yPos): x(xPos), y(yPos) {}
+	Block( int xPos, int yPos ): x(xPos), y(yPos) {}
 };
 
 class Debug {
 	public:
-		Debug( void ) {};
-		~Debug( void ) {};
+		Debug( void );
+		~Debug( void );
 
 		static void	print(std::string string, bool flag) {
 			std::string	RED = "\033[1;31m";

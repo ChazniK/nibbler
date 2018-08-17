@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 12:34:22 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/11 12:13:57 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:05:05 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Game.hpp"
 
 int	main( void )
 {

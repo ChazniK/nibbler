@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Factor.hpp                                         :+:      :+:    :+:   */
+/*   Factory.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 14:55:56 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 16:40:13 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:05:58 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@
 class Factory
 {
 	public:
-		Factory(void);
+		Factory( void );
+		Factory(const Factory & src);
 		~Factory(void);
 
-		Interface	*createLibrary(int libNum, int width, int height);
-		void	deleteLibrary(Interface* & dlGraphics);
-		
+		Interface	*createLibrary( int libNum, int width, int height );
+		void	deleteLibrary( Interface* & dlGraphics );
+
+		Factory & operator=( const Factory & src );
 
 	private:
 		Interface	*_dlGraphics;

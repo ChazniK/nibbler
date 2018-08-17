@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 17:12:51 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:08:20 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@ class Display : public Interface
 {
 	public:
 		Display( void );
+		Display ( const Display & src);
 		virtual ~Display( void );
 
 		virtual void	Init(int width, int height);
 		virtual Keys	getKey( void );
 		virtual void	Render( int foodX, int foodY, std::vector<Block> snake);
 		virtual bool	PollEvents( void );
+
+		Display & operator=( const Display & rhs);
+
 
 	private:
 		int					_width;

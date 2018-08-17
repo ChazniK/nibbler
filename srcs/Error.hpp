@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Error.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:01:27 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 17:14:41 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 18:02:06 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 class	Error {
 	public:
-		Error( void ) {};
-		~Error( void ) {};
+		Error( void );
+		~Error( void );
 		class InvalidWidth : public std::exception {
 			public:
 				std::string		e_msg;
