@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 15:23:55 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/17 15:40:18 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Display::~Display(void)
 
 void	Display::CloseWindow( void )
 {
-	Debug::print("close window", true);
+
 }
 
 // get the key inputs
@@ -33,7 +33,7 @@ Keys	Display::getKey(void)
 {
 	if (glfwGetKey(this->_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
-		glfwSetWindowShouldClose(this->_window, true);
+		glfwTerminate();
 		return Keys::ESC;
 	}
 	else if (glfwGetKey(this->_window, GLFW_KEY_UP) == GLFW_PRESS)
@@ -57,9 +57,13 @@ Keys	Display::getKey(void)
 // get the events
 bool	Display::PollEvents( void )
 {
-	//if (!glfwWindowShouldClose(this->_window))
-	glfwPollEvents();
-	return true;
+	if (!glfwWindowShouldClose(this->_window))
+	{
+		glfwPollEvents();
+		return true;
+	}
+	else
+		return false;
 }
 
 // render the background & border
