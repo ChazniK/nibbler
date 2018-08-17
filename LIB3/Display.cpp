@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 14:03:46 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 15:23:55 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,27 @@ void	Display::CloseWindow( void )
 // get the key inputs
 Keys	Display::getKey(void)
 {
-	//	if (this->_event.type == SDL_KEYDOWN)
-	//	{
-	//		int keyCode = this->_event.key.keysym.sym;
-	//		if (keyCode == SDLK_UP)
-	//			return Keys::UPA;
-	//		else if (keyCode == SDLK_DOWN)
-	//			return Keys::DOWNA;
-	//		else if (keyCode == SDLK_LEFT)
-	//			return Keys::LEFTA;
-	//		else if (keyCode == SDLK_RIGHT)
-	//			return Keys::RIGHTA;
-	//		else if (keyCode == SDLK_ESCAPE)
-	//			return Keys::ESC;
-	//		else if (keyCode == SDLK_F1)
-	//			return Keys::F1;
-	//		else if (keyCode == SDLK_F2)
-	//			return Keys::F2;
-	//		else if (keyCode == SDLK_F3)
-	//			return Keys::F3;
-	//		else
-	//			return Keys::UNKNOWN;
-	//	}
-	return Keys::UNKNOWN;
+	if (glfwGetKey(this->_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(this->_window, true);
+		return Keys::ESC;
+	}
+	else if (glfwGetKey(this->_window, GLFW_KEY_UP) == GLFW_PRESS)
+		return Keys::UPA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		return Keys::DOWNA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		return Keys::LEFTA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		return Keys::RIGHTA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_F1) == GLFW_PRESS)
+		return Keys::F1;
+	else if (glfwGetKey(this->_window, GLFW_KEY_F2) == GLFW_PRESS)
+		return Keys::F2;
+	else if (glfwGetKey(this->_window, GLFW_KEY_F3) == GLFW_PRESS)
+		return Keys::F3;
+	else
+		return Keys::UNKNOWN;
 }
 
 // get the events
