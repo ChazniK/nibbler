@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 11:59:11 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 14:03:46 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,32 @@ Points	Display::getPoints(int x, int y)
 	// (x0 y0)(x1 y0)
 	// (x0 y1)(x1 y1)
 	return (points);
-	
+
 }
 
 // Render background/apple/snake/border
 void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 {
-	(void)snake;
-	Points food;
+	Points	food;
+	Points	body;
+	Points	bg;
 	// clear
-	//glMatrixMode(GL_MODELVIEW);
-	//glOrtho(0.0, 16.0, 0.0, 16.0, -1.0, 1.0);   // setup a 16x16x2 viewing world
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	//glTranslatef(static_cast<float>(foodX), static_cast<float>(foodY), 0.f);
+	// ============= BORDER ================= //
+    glColor3f(0.3f, 0.0f, 0.0f);
+    glBegin(GL_QUADS);
+    bg = getPoints(0, 0);
+    glVertex2f(bg.x1, bg.y1);
+    bg = getPoints(this->_width / 16 -1, 0);
+    glVertex2f(bg.x0, bg.y1);
+    bg = getPoints(this->_width / 16 - 1, this->_height / 16 - 1);
+    glVertex2f(bg.x0, bg.y0);
+    bg = getPoints(0, this->_height /16 - 1);
+    glVertex2f(bg.x1, bg.y0);
+    glEnd();
+	// ============= FOOD ============== //
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glBegin(GL_QUADS);
 	food = getPoints(foodX,foodY);
@@ -103,6 +114,27 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	glVertex2f(food.x1, food.y1);
 	glVertex2f(food.x0, food.y1);
 	glEnd();
+	// ============= SNAKE HEAD ============== //
+	glColor3f(0.0f, 0.5f, 0.0f);
+	glBegin(GL_QUADS);
+	body = getPoints(snake.begin()->x, snake.begin()->y);
+	glVertex2f(body.x0, body.y0);
+	glVertex2f(body.x1, body.y0);
+	glVertex2f(body.x1, body.y1);
+	glVertex2f(body.x0, body.y1);
+	glEnd();
+	// ============= SNAKE BODY ============== //
+	for (auto section = snake.begin() + 1; section != snake.end();++section)
+	{
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glBegin(GL_QUADS);
+		body = getPoints(section->x, section->y);
+		glVertex2f(body.x0, body.y0);
+		glVertex2f(body.x1, body.y0);
+		glVertex2f(body.x1, body.y1);
+		glVertex2f(body.x0, body.y1);
+		glEnd();
+	}
 	// swap front and back bufferes
 	glfwSwapBuffers(this->_window);
 }

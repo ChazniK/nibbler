@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 11:55:28 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 12:38:52 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	rect.y = 16;
 	rect.h = this->_height - 32;
 	rect.w = this->_width - 32;
-	SDL_RenderFillRect(this->_render, &rect);
 	// =========== head ============ //
 	SDL_SetRenderDrawColor(this->_render, 0,0,255,0);
+	SDL_RenderFillRect(this->_render, &rect);
 	rect.h = 16;
 	rect.w = 16;
 	auto head = snake.begin();
