@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:55:00 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/17 17:24:14 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:54:23 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void				Snake::GetWindow(int width, int height)
 bool				Snake::Tick(Food & apple)
 {
 	clock_t time_end;
-    time_end = clock() + 60 * CLOCKS_PER_SEC/1000;
+    time_end = clock() + this->_speed * CLOCKS_PER_SEC/1000;
     while (clock() < time_end) {}
 	if (getSnake().empty())
 		return false;
@@ -46,6 +46,8 @@ bool				Snake::Tick(Food & apple)
 	if (this->getSnake()[0].x == apple.getXPos() && this->getSnake()[0].y == apple.getYPos())
 	{
 		extendSnake();
+		this->_score += 10;
+		this->_speed -= 5;
 		apple.spawnFood();
 	}
 	move();
@@ -120,12 +122,16 @@ void				Snake::checkCollision( void )
 	{
 		if(itr->x == head.x && itr->y == head.y)
 		{
+			std::cout << "Final score: " << this->_score << std::endl;
 			this->reset();
 			break;
 		}	
 	}
 	if (head.x <= 0 || head.y <= 0 || head.x >= _width - 1 || head.y >= _height - 1)
-		this->reset();
+	{
+			std::cout << "Final score: " << this->_score << std::endl;
+			this->reset();
+	}		
 }
 
 Direction			Snake::getDirection( void ) const
@@ -145,10 +151,14 @@ void				Snake::setDirection( Direction dir )
 		_direction = dir;
 	else if (_direction != Direction::DOWN && dir == Direction::UP)
 		_direction = dir;
+	else if (dir == Direction::NONE)
+		_direction = dir;
 }
 
 void				Snake::reset( void )
 {
+	this->_score = 0;
+	this->_speed = 100;
 	_snakeBody.clear();
 	_snakeBody.push_back(Block(5,7));
 	_snakeBody.push_back(Block(5,6));

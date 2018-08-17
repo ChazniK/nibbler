@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/17 16:56:35 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:54:26 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ class Snake
 		Direction			_direction;
 		int					_width;
 		int					_height;
+		int					_score;
+		int					_speed;
 };
 
 #endif
