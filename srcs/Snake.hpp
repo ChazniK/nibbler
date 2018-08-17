@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:54:54 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/16 15:34:49 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/17 16:56:35 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ class Snake
 
 		std::vector<Block>	_snakeBody;
 		Direction			_direction;
-		float				_speed;
 		int					_width;
 		int					_height;
 };

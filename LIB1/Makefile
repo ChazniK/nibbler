@@ -6,7 +6,7 @@
 #    By: mafernan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 10:14:37 by mafernan          #+#    #+#              #
-#    Updated: 2018/08/14 15:52:31 by mafernan         ###   ########.fr        #
+#    Updated: 2018/08/17 17:04:33 by mafernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FRAMEWORK_PATH= -F SFML/Frameworks
 
 INCL= -I includes -I SFML/include -I SFML/lib
 
-SRCS= Display.cpp 
+SRCS= Display.cpp ../srcs/Error.cpp 
 
 all:
 	@echo "Compiling dylib for SFML"

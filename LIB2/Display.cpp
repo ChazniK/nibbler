@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 12:38:52 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:12:46 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ Display::~Display(void)
 	SDL_DestroyRenderer(this->_render);
 	SDL_DestroyWindow(this->_window);
 	SDL_Quit();
-}
-
-void	Display::CloseWindow( void )
-{
-	Debug::print("close window", true);
 }
 
 // get the key inputs
@@ -70,12 +65,6 @@ bool	Display::PollEvents( void )
 	return true;
 }
 
-// render the background & border
-void	Display::BackGround( void )
-{
-	Debug::print("background", true);
-}
-
 // Render background/apple/snake/border
 void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 {
@@ -111,7 +100,6 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	SDL_RenderFillRect(this->_render, &rect);
 	// =============== Render everthing ==== //
 	SDL_RenderPresent(this->_render);
-	
 }
 
 // initilize screen size

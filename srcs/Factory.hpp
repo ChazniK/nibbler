@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 14:55:56 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 15:00:29 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:40:13 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FACTORY_HPP
 
 # include <iostream>
+# include <string>
 # include "Interface.hpp"
+# include "../srcs/Error.hpp"
 # include <dlfcn.h>
 
 class Factory

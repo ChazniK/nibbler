@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 15:37:21 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:47:09 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ void Game::runNibbler()
 			func->Render(this->food.getXPos(), this->food.getYPos(), this->snake.getSnake());
 			if (func->PollEvents() == false)
 				break;
-			if (func->getKey() == Keys::F1 || func->getKey() == Keys::F2)
+			if (func->getKey() == Keys::F1 || func->getKey() == Keys::F2 || func->getKey() == Keys::F3)
 				func = factory.createLibrary(func->getKey(), _width, _height);
 			if (func->getKey() == Keys::ESC)
 				break;
@@ -206,9 +206,7 @@ void Game::runNibbler()
 			if (func->getKey() == Keys::RIGHTA)
 				snake.setDirection(Direction::RIGHT);
 		}
-		Debug::print("about to delete", true);
 		factory.deleteLibrary(func);
-		Debug::print("Deleted this function", true);
 	}
 	catch (std::exception & e)
 	{

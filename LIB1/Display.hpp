@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/16 11:33:32 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/17 17:12:29 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define DISPLAY_HPP
 
 # include "../srcs/Interface.hpp"
-# include "../srcs/debug.hpp"
+# include "../srcs/Error.hpp"
 # include <vector>
 # include <SFML/Graphics.hpp>
 
@@ -28,8 +28,6 @@ class Display : public Interface
 		virtual Keys	getKey( void );
 		virtual void	Render( int foodX, int foodY, std::vector<Block> snake);
 		virtual bool	PollEvents( void );
-		virtual void	CloseWindow( void );
-		virtual void	BackGround( void );
 
 	private:
 		sf::Event			_event;
@@ -39,6 +37,7 @@ class Display : public Interface
 		sf::CircleShape		_apple;
 		sf::RectangleShape	_bounds[4];
 		int					_blockSize = 16;
+		virtual void		BackGround( void );
 };
 
 extern "C" Interface *	CreateDisplay(void);

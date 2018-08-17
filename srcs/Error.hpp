@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:01:27 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/06 16:50:52 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:14:41 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,36 @@ class	Error {
 			public:
 				std::string		e_msg;
 				InvalidLibrary(const std::string & line);
+				virtual const char * what() const throw();
+		};
+		class NoLibrary : public std::exception {
+			public:
+				std::string		e_msg;
+				NoLibrary(const std::string & line);
+				virtual const char * what() const throw();
+		};
+		class FunctionPointer : public std::exception {
+			public:
+				std::string		e_msg;
+				FunctionPointer(const std::string & line);
+				virtual const char * what() const throw();
+		};
+		class Texture : public std::exception {
+			public:
+				std::string		e_msg;
+				Texture(const std::string & line);
+				virtual const char * what() const throw();
+		};
+		class Snake : public std::exception {
+			public:
+				std::string		e_msg;
+				Snake(const std::string & line);
+				virtual const char * what() const throw();
+		};
+		class RuntimeError : public std::exception {
+			public:
+				std::string		e_msg;
+				RuntimeError(const std::string & line);
 				virtual const char * what() const throw();
 		};
 };

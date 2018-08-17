@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 15:33:41 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:04:57 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ Display::Display(void)
 
 // deconstructor
 Display::~Display(void)
-{
-	this->_window.close();
-}
-
-void	Display::CloseWindow( void )
 {
 	this->_window.close();
 }
@@ -61,13 +56,8 @@ Keys	Display::getKey(void)
 bool	Display::PollEvents( void )
 {
 	if (this->_window.pollEvent(this->_event))
-	{
 		if (this->_event.type == sf::Event::Closed)
-		{
-			Debug::print("closed window", true);
 			return false;
-		}
-	}
 	return true;
 }
 
@@ -77,7 +67,7 @@ void	Display::BackGround( void )
 	// =========== Background ============= //
 	sf::Texture		texture;
 	if (!texture.loadFromFile("sprites/background.jpg"))
-		Debug::print("failed to load background texture in sfml", true);
+		throw Error::Texture("Texture.loadFromFile did not find background image");
 	texture.setRepeated(true);
 	sf::Sprite	background(texture);
 	background.setTextureRect(sf::IntRect(0, 0, this->_window.getSize().x, this->_window.getSize().y));
@@ -111,10 +101,7 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	// ===== APPLE ===== //
 	sf::Texture		texture;
 	if (!texture.loadFromFile("sprites/apple.png"))
-	{
-		Debug::print("failed to load apple texture in sfml", true);
 		_apple.setFillColor(sf::Color::Red);
-	}
 	texture.setRepeated(true);
 	_apple.setRadius(this->_blockSize / 2);
 	_apple.setPosition(foodX * this->_blockSize, foodY * this->_blockSize);
@@ -127,12 +114,9 @@ void	Display::Render(int foodX, int foodY, std::vector<Block> snake)
 	sf::Texture			bodytex;
 	Body.setSize(sf::Vector2f(this->_blockSize, this->_blockSize));
 	if (!headtex.loadFromFile("sprites/head.png") || !bodytex.loadFromFile("sprites/body.png"))
-	{
-		Debug::print("failed to load apple texture in sfml", true);
 		Body.setFillColor(sf::Color::Red);
-	}
 	if (snake.size() == 0)
-		Debug::print("Vector is empty please check if snake has been initialized properly", true);
+		Error::Snake("Snake size is empty");
 	auto head = snake.begin();
 	Body.setTexture(&headtex);
 	Body.setPosition(head->x * this->_blockSize, head->y * this->_blockSize);
@@ -151,7 +135,7 @@ void	Display::Init(int width, int height)
 {
 	this->_width = width;
 	this->_height = height;
-	this->_window.create(sf::VideoMode(_width, _height, 32), "Snake", sf::Style::Close);
+	this->_window.create(sf::VideoMode(_width, _height, 32), "Snake SFML", sf::Style::Close);
 }
 
 // return instance of display object.

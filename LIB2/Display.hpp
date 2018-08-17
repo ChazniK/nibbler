@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 09:40:31 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 17:12:51 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DISPLAY_HPP
 
 # include "../srcs/Interface.hpp"
+# include "../srcs/Error.hpp"
 # include "../srcs/debug.hpp"
 # include <vector>
 # include <SDL.h>
@@ -28,8 +29,6 @@ class Display : public Interface
 		virtual Keys	getKey( void );
 		virtual void	Render( int foodX, int foodY, std::vector<Block> snake);
 		virtual bool	PollEvents( void );
-		virtual void	CloseWindow( void );
-		virtual void	BackGround( void );
 
 	private:
 		int					_width;

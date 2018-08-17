@@ -6,15 +6,13 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 16:58:03 by ckatz             #+#    #+#             */
-/*   Updated: 2018/08/14 16:05:02 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/17 16:57:04 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Food.hpp"
 
-Food::Food(void)
-{
-}
+Food::Food(void) {}
 
 void	Food::init(int width, int height)
 {
@@ -28,10 +26,7 @@ Food::Food(const Food & src)
 	return;
 }
 
-Food::~Food(void)
-{
-
-}
+Food::~Food(void) {}
 
 int		Food::getXPos(void) const
 {

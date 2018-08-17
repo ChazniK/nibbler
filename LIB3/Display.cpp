@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/17 15:40:18 by ckatz            ###   ########.fr       */
+/*   Updated: 2018/08/17 17:22:51 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,11 @@ Display::~Display(void)
 	glfwTerminate();
 }
 
-void	Display::CloseWindow( void )
-{
-
-}
-
 // get the key inputs
 Keys	Display::getKey(void)
 {
 	if (glfwGetKey(this->_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwTerminate();
 		return Keys::ESC;
-	}
 	else if (glfwGetKey(this->_window, GLFW_KEY_UP) == GLFW_PRESS)
 		return Keys::UPA;
 	else if (glfwGetKey(this->_window, GLFW_KEY_DOWN) == GLFW_PRESS)
@@ -66,21 +58,24 @@ bool	Display::PollEvents( void )
 		return false;
 }
 
-// render the background & border
-void	Display::BackGround( void )
-{
-	Debug::print("background", true);
-}
-
 Points	Display::getPoints(int x, int y)
 {
 	Points	points;
+
 	points.x0 = static_cast<float>(x * 16 - (this->_width >> 1)) / static_cast<float>(this->_width >> 1);
 	points.x1 = static_cast<float>(x *16 + 16 - (this->_width >> 1)) / static_cast<float>(this->_width >> 1);
 	points.y0 = static_cast<float>((this->_height >> 1) - y *16) / static_cast<float>(this->_height >> 1);
 	points.y1 = static_cast<float>((this->_height >> 1) - y *16 - 16) / static_cast<float>(this->_height >> 1);
-	// (x0 y0)(x1 y0)
-	// (x0 y1)(x1 y1)
+	// what the points mean on a graph
+	//
+	//            |
+	//	 (x0, y0) | (x1, y0)
+	//	          |
+	//	 --------------------
+	//	          |
+	//	 (x0, y1) | (x1, y1)
+	//            |
+	//
 	return (points);
 
 }
@@ -148,14 +143,10 @@ void	Display::Init(int width, int height)
 	this->_height = height;
 
 	if (!glfwInit())
-		Debug::print("Did not Initilize glfw properly", true);
+		std::cout << "Did not initilize glfw properly" << std::endl;
 	this->_window = glfwCreateWindow(this->_width, this->_height, "Snake in GLFW", NULL, NULL);
 	if (!this->_window)
-	{
-		Debug::print("window did not create properly", true);
-		glfwTerminate();
-	}
-
+		std::cout << "Window was not created properly in glfw" << std::endl;
 	glfwMakeContextCurrent(this->_window);
 	glfwGetFramebufferSize(this->_window, &this->_width, &this->_height);
 	glViewport(0, 0, this->_width, this->_height);
