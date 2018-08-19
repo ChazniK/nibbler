@@ -48,3 +48,6 @@ BUTTON_D = move player 2 right
 ENTER = select option in menu
 ```
 
+## AUTHOR
+Chazni - logic
+Marco - graphics
