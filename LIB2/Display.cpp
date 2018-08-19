@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 08:46:48 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:32:20 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,27 @@ Display::~Display(void)
 	SDL_DestroyWindow(this->_window);
 	SDL_Quit();
 }
+
+// get player two keys
+Keys	Display::getKey2(void)
+{
+	if (this->_event.type == SDL_KEYDOWN)
+	{
+		int keyCode = this->_event.key.keysym.sym;
+		if (keyCode == SDLK_w)
+			return Keys::KEYW;
+		else if (keyCode == SDLK_a)
+			return Keys::KEYA;
+		else if (keyCode == SDLK_s)
+			return Keys::KEYS;
+		else if (keyCode == SDLK_d)
+			return Keys::KEYD;
+		else
+			return Keys::UNKNOWN;
+	}
+	return Keys::UNKNOWN;
+}
+
 
 // get the key inputs
 Keys	Display::getKey(void)
@@ -48,6 +69,14 @@ Keys	Display::getKey(void)
 			return Keys::F2;
 		else if (keyCode == SDLK_F3)
 			return Keys::F3;
+		else if (keyCode == SDLK_w)
+			return Keys::KEYW;
+		else if (keyCode == SDLK_a)
+			return Keys::KEYA;
+		else if (keyCode == SDLK_s)
+			return Keys::KEYS;
+		else if (keyCode == SDLK_d)
+			return Keys::KEYD;
 		else
 			return Keys::UNKNOWN;
 	}
@@ -65,8 +94,32 @@ bool	Display::PollEvents( void )
 	return true;
 }
 
+// player two snake
+void	Display::secondSnake(std::vector<Block> snake)
+{
+	SDL_Rect rect;
+	// =========== head ============ //
+	SDL_SetRenderDrawColor(this->_render, 0,0,255,0);
+	SDL_RenderFillRect(this->_render, &rect);
+	rect.h = 16;
+	rect.w = 16;
+	auto head = snake.begin();
+	SDL_SetRenderDrawColor(this->_render, 0,255,0,0);
+	rect.x = this->_le + 16 * head->x;
+	rect.y = this->_te + 16 * head->y;
+	SDL_RenderFillRect(this->_render, &rect);
+	// ================= body ========== //
+	SDL_SetRenderDrawColor(this->_render, 255,0,0,0);
+	for (auto section = snake.begin() + 1; section != snake.end(); ++section)
+	{
+		rect.x = this->_le + 16 * section->x;
+		rect.y = this->_te + 16 * section->y;
+		SDL_RenderFillRect(this->_render, &rect);
+	}
+}
+
 // Render background/apple/snake/border
-void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
+void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake, std::vector<Block> snake2, int set)
 {
 	SDL_Rect rect;
 	SDL_RenderClear(this->_render);
@@ -94,6 +147,9 @@ void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
 		rect.y = this->_te + 16 * section->y;
 		SDL_RenderFillRect(this->_render, &rect);
 	}
+	// =============== Player 2 ============ //
+	if (set == 2)
+		secondSnake(snake2);
 	// =============== FOOD ================ //
 	if (type == 1)
 		SDL_SetRenderDrawColor(this->_render, 255,0,0,0);

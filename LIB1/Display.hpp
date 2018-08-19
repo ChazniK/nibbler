@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 09:43:27 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:29:30 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ class Display : public Interface
 
 		virtual void	Init(int width, int height);
 		virtual Keys	getKey( void );
-		virtual void	Render( int foodX, int foodY, int type, std::vector<Block> snake);
+		virtual Keys	getKey2( void );
+		virtual void	Render( int foodX, int foodY, int type, std::vector<Block> snake, std::vector<Block> snake2, int set);
 		virtual bool	PollEvents( void );
 
 		Display & operator=( const Display & rhs);
 
 	private:
+		void				secondSnake(std::vector<Block> snake);
 		sf::SoundBuffer		_buffer;
 		sf::Sound			_sound;
 		sf::Event			_event;
@@ -43,7 +45,10 @@ class Display : public Interface
 		sf::CircleShape		_apple;
 		sf::RectangleShape	_bounds[4];
 		int					_blockSize = 16;
-		virtual void		BackGround( void );
+		virtual void				BackGround( void );
+		sf::RectangleShape 	Body;
+		sf::Texture			headtex;
+		sf::Texture			bodytex;
 };
 
 extern "C" Interface *	CreateDisplay(void);

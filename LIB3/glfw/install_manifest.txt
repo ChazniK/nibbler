@@ -1,8 +1,0 @@
-/goinfre/mafernan/.brew/include/GLFW/glfw3.h
-/goinfre/mafernan/.brew/include/GLFW/glfw3native.h
-/goinfre/mafernan/.brew/lib/cmake/glfw3/glfw3Config.cmake
-/goinfre/mafernan/.brew/lib/cmake/glfw3/glfw3ConfigVersion.cmake
-/goinfre/mafernan/.brew/lib/cmake/glfw3/glfw3Targets.cmake
-/goinfre/mafernan/.brew/lib/cmake/glfw3/glfw3Targets-noconfig.cmake
-/goinfre/mafernan/.brew/lib/pkgconfig/glfw3.pc
-/goinfre/mafernan/.brew/lib/libglfw3.a

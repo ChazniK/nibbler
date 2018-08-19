@@ -6,7 +6,7 @@
 /*   By: mafernan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/19 07:38:11 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 08:32:51 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 10:38:09 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,26 +258,6 @@ void	Display::settings(void)
 	clear();
 }
 
-void	Display::score(void)
-{
-	const char *options[] = {"do nothing","reset","back"};
-	int	set = -1;
-
-	clear();
-	mvprintw(1, 0, "=====================================================");
-	mvprintw(3, 5, "SCORE: %d", this->_score);
-	mvprintw(5, 5, "TIME: %d", this->_time);
-	mvprintw(15, 0, "=====================================================");
-	set = barmenu(options, 7, 5, 3, this->_width, 3, 3);
-	if (set == 0)
-	{
-		this->_score = 0;
-		this->_time = 0;
-	}
-	clear();
-	
-}
-
 int	Display::menu( void )
 {
 
@@ -285,7 +265,7 @@ int	Display::menu( void )
 	noecho();	
 	keypad(stdscr, TRUE);
 
-	const char *menu[] = {"play","last score" ,"settings","exit"};
+	const char *menu[] = {"play","multiplayer" ,"settings","exit"};
 	int	set = -1;
 
 	while (set != 3)
@@ -298,7 +278,7 @@ int	Display::menu( void )
 		if (set == 0)
 			return (1);
 		if (set == 1)
-			score();
+			return (2);
 		if (set == 2)
 			settings();
 	}

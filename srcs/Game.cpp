@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:49:38 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 08:45:02 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:31:55 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void Game::runNibbler()
 	set = display.menu();
 	if (set != 0)
 	{
+		if (set == 2)
+			snake.setMultiplayer();
 		this->_width = display.screenWidth();
 		this->_height = display.screenHeight();
 		this->food.init(this->_width, this->_height);
@@ -61,7 +63,7 @@ void Game::runNibbler()
 				display.update(snake.getScore(), snake.getLives());
 				display.print();
 				// ===================  ^^ added these ^^ ================ //
-				func->Render(this->food.getXPos(), this->food.getYPos(), this->food.getType(), this->snake.getSnake());
+				func->Render(this->food.getXPos(), this->food.getYPos(), this->food.getType(), this->snake.getSnake() ,this->snake.getSnake2(), set);
 				if (func->PollEvents() == false)
 					break;
 				if (func->getKey() == Keys::F1 || func->getKey() == Keys::F2 || func->getKey() == Keys::F3)
@@ -76,6 +78,18 @@ void Game::runNibbler()
 					snake.setDirection(Direction::LEFT);
 				if (func->getKey() == Keys::RIGHTA)
 					snake.setDirection(Direction::RIGHT);
+				// player two control
+				if (set == 2)
+				{
+					if (func->getKey2() == Keys::KEYW)
+						snake.setDirection2(Direction::UP);
+					if (func->getKey2() == Keys::KEYS)
+						snake.setDirection2(Direction::DOWN);
+					if (func->getKey2() == Keys::KEYA)
+						snake.setDirection2(Direction::LEFT);
+					if (func->getKey2() == Keys::KEYD)
+						snake.setDirection2(Direction::RIGHT);
+				}
 			}
 			factory.deleteLibrary(func);
 		}

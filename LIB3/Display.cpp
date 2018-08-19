@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 08:48:13 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:32:28 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@ Display::Display(void)
 Display::~Display(void)
 {
 	glfwTerminate();
+}
+
+// get player two keys
+Keys	Display::getKey2(void)
+{
+	if (glfwGetKey(this->_window, GLFW_KEY_W) == GLFW_PRESS)
+		return Keys::KEYW;
+	else if (glfwGetKey(this->_window, GLFW_KEY_A) == GLFW_PRESS)
+		return Keys::KEYA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_S) == GLFW_PRESS)
+		return Keys::KEYS;
+	else if (glfwGetKey(this->_window, GLFW_KEY_D) == GLFW_PRESS)
+		return Keys::KEYD;
+	else
+		return Keys::UNKNOWN;
 }
 
 // get the key inputs
@@ -42,6 +57,14 @@ Keys	Display::getKey(void)
 		return Keys::F2;
 	else if (glfwGetKey(this->_window, GLFW_KEY_F3) == GLFW_PRESS)
 		return Keys::F3;
+	else if (glfwGetKey(this->_window, GLFW_KEY_W) == GLFW_PRESS)
+		return Keys::KEYW;
+	else if (glfwGetKey(this->_window, GLFW_KEY_A) == GLFW_PRESS)
+		return Keys::KEYA;
+	else if (glfwGetKey(this->_window, GLFW_KEY_S) == GLFW_PRESS)
+		return Keys::KEYS;
+	else if (glfwGetKey(this->_window, GLFW_KEY_D) == GLFW_PRESS)
+		return Keys::KEYD;
 	else
 		return Keys::UNKNOWN;
 }
@@ -80,12 +103,34 @@ Points	Display::getPoints(int x, int y)
 
 }
 
-// Render background/apple/snake/border
-void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
+// second player snake
+void	Display::secondSnake(std::vector<Block> snake)
 {
-	Points	food;
-	Points	body;
-	Points	bg;
+	glColor3f(0.0f, 0.5f, 0.0f);
+	glBegin(GL_QUADS);
+	body = getPoints(snake.begin()->x, snake.begin()->y);
+	glVertex2f(body.x0, body.y0);
+	glVertex2f(body.x1, body.y0);
+	glVertex2f(body.x1, body.y1);
+	glVertex2f(body.x0, body.y1);
+	glEnd();
+	// ============= SNAKE BODY ============== //
+	for (auto section = snake.begin() + 1; section != snake.end();++section)
+	{
+		glColor3f(0.0f, 1.0f, 0.0f);
+		glBegin(GL_QUADS);
+		body = getPoints(section->x, section->y);
+		glVertex2f(body.x0, body.y0);
+		glVertex2f(body.x1, body.y0);
+		glVertex2f(body.x1, body.y1);
+		glVertex2f(body.x0, body.y1);
+		glEnd();
+	}
+}
+
+// Render background/apple/snake/border
+void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake, std::vector<Block> snake2, int set)
+{
 	// clear
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -135,6 +180,9 @@ void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
 		glVertex2f(body.x0, body.y1);
 		glEnd();
 	}
+	// ============= player two =========== //
+	if (set == 2)
+		secondSnake(snake2);
 	// swap front and back bufferes
 	glfwSwapBuffers(this->_window);
 }

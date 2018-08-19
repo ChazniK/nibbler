@@ -16,7 +16,6 @@ class Display {
 		void 	settings( void );
 		void 	lives( void );
 		void 	difficulty( void );
-		void 	score( void );
 		void	library( void );
 		void	reset( void );
 		int	 	getLibrary( void );

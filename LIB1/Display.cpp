@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 09:59:38 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:29:13 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,39 @@ Display::Display(void)
 {
 	if (!this->_buffer.loadFromFile("sprites/eat.wav"))
 		throw Error::Texture("buffer.loadFromFile did not find move.wav");
+	if (!headtex.loadFromFile("sprites/head.png") || !bodytex.loadFromFile("sprites/body.png"))
+		Body.setFillColor(sf::Color::Red);
 }
 
 // deconstructor
 Display::~Display(void)
 {
 	this->_window.close();
+}
+
+// player two controls
+Keys	Display::getKey2(void)
+{
+	if (this->_event.type == sf::Event::KeyPressed) 
+	{
+		int	keyCode = this->_event.key.code;
+		switch (keyCode) {
+			case sf::Keyboard::W:
+				return Keys::KEYW;
+				break;
+			case sf::Keyboard::A:
+				return Keys::KEYA;
+				break;
+			case sf::Keyboard::S:
+				return Keys::KEYS;
+				break;
+			case sf::Keyboard::D:
+				return Keys::KEYD;
+				break;
+			return Keys::UNKNOWN;
+		}
+	}
+	return Keys::UNKNOWN;
 }
 
 // get the key inputs
@@ -34,20 +61,28 @@ Keys	Display::getKey(void)
 		switch (keyCode) {
 			case sf::Keyboard::Up:
 				return Keys::UPA;
+				break;
 			case sf::Keyboard::Down:
 				return Keys::DOWNA;
+				break;
 			case sf::Keyboard::Left:
 				return Keys::LEFTA;
+				break;
 			case sf::Keyboard::Right:
 				return Keys::RIGHTA;
+				break;
 			case sf::Keyboard::Escape:
 				return Keys::ESC;
+				break;
 			case sf::Keyboard::F1:
 				return Keys::F1;
+				break;
 			case sf::Keyboard::F2:
 				return Keys::F2;
+				break;
 			case sf::Keyboard::F3:
 				return Keys::F3;
+				break;
 			return Keys::UNKNOWN;
 		}
 	}
@@ -94,8 +129,26 @@ void	Display::BackGround( void )
 
 }
 
+// player two snake
+void	Display::secondSnake(std::vector<Block> snake)
+{
+	Body.setSize(sf::Vector2f(this->_blockSize, this->_blockSize));
+	if (snake.size() == 0)
+		std::cout << "temp" << std::endl;
+	auto head = snake.begin();
+	Body.setTexture(&headtex);
+	Body.setPosition(head->x * this->_blockSize, head->y * this->_blockSize);
+	this->_window.draw(Body);
+	for (auto section = snake.begin() + 1; section != snake.end(); ++section)
+	{
+		Body.setTexture(&bodytex);
+		Body.setPosition(section->x * this->_blockSize, section->y * this->_blockSize);
+		this->_window.draw(Body);
+	}
+}
+
 // render background/apple/snake/border
-void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
+void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake, std::vector<Block> snake2, int set)
 {
 	this->_window.clear(sf::Color(163, 159, 151));
 	// === Background === //
@@ -117,17 +170,10 @@ void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
 	_apple.setPosition(foodX * this->_blockSize, foodY * this->_blockSize);
 	_apple.setTexture(&texture);
 	this->_window.draw(_apple);
-
 	// ====== SNAKE ========= //
-	sf::RectangleShape 	Body;
-	sf::Texture			headtex;
-	sf::Texture			bodytex;
 	Body.setSize(sf::Vector2f(this->_blockSize, this->_blockSize));
-	if (!headtex.loadFromFile("sprites/head.png") || !bodytex.loadFromFile("sprites/body.png"))
-		Body.setFillColor(sf::Color::Red);
 	if (snake.size() == 0)
 		std::cout << "temp" << std::endl;
-		//throw Error::Snake("Snake size is empty");
 	auto head = snake.begin();
 	Body.setTexture(&headtex);
 	Body.setPosition(head->x * this->_blockSize, head->y * this->_blockSize);
@@ -138,6 +184,8 @@ void	Display::Render(int foodX, int foodY, int type, std::vector<Block> snake)
 		Body.setPosition(section->x * this->_blockSize, section->y * this->_blockSize);
 		this->_window.draw(Body);
 	}
+	if (set == 2)
+		secondSnake(snake2);
 	// ========= sounds ============= //
 	if (snake.begin()->x == foodX && snake.begin()->y == foodY)
 	{

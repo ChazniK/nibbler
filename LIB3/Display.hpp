@@ -6,7 +6,7 @@
 /*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 09:06:09 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 08:47:13 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/19 11:30:44 by mafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ class Display : public Interface
 
 		virtual void	Init(int width, int height);
 		virtual Keys	getKey( void );
-		virtual void	Render( int foodX, int foodY, int type, std::vector<Block> snake);
+		virtual Keys	getKey2( void );
+		virtual void	Render( int foodX, int foodY, int type, std::vector<Block> snake, std::vector<Block> snake2, int set);
 		virtual bool	PollEvents( void );
 
 		Display & operator=( const Display & rhs);
@@ -41,8 +42,12 @@ class Display : public Interface
 	private:
 		int					_width;
 		int					_height;
+		Points	food;
+		Points	body;
+		Points	bg;
 		GLFWwindow			*_window;
 		Points				getPoints(int x, int y);
+		void				secondSnake(std::vector<Block> snake);
 };
 
 extern "C" Interface *	CreateDisplay(void);
