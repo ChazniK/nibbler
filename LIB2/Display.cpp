@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Display.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 11:32:20 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/20 17:40:13 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,17 @@ void	Display::secondSnake(std::vector<Block> snake)
 {
 	SDL_Rect rect;
 	// =========== head ============ //
-	SDL_SetRenderDrawColor(this->_render, 0,0,255,0);
+	SDL_SetRenderDrawColor(this->_render, 0,50,100,0);
 	SDL_RenderFillRect(this->_render, &rect);
 	rect.h = 16;
 	rect.w = 16;
 	auto head = snake.begin();
-	SDL_SetRenderDrawColor(this->_render, 0,255,0,0);
+	SDL_SetRenderDrawColor(this->_render, 0,50,50,0);
 	rect.x = this->_le + 16 * head->x;
 	rect.y = this->_te + 16 * head->y;
 	SDL_RenderFillRect(this->_render, &rect);
 	// ================= body ========== //
-	SDL_SetRenderDrawColor(this->_render, 255,0,0,0);
+	SDL_SetRenderDrawColor(this->_render, 0,0,100,100);
 	for (auto section = snake.begin() + 1; section != snake.end(); ++section)
 	{
 		rect.x = this->_le + 16 * section->x;

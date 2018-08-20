@@ -6,9 +6,12 @@
 # include <ncurses.h>
 
 class Display {
+
 	public:
 		Display( void );
+		Display(const Display & src);
 		~Display( void );
+
 		int	menu( void );
 		void	update( int score, int lives );
 		void	print( void );
@@ -23,6 +26,9 @@ class Display {
 		int	 	getLevel( void );
 		int		screenHeight( void );
 		int		screenWidth( void );
+
+		Display & operator=( const Display & rhs);
+
 	private:
 		int	_library = 5;
 		int	_level = 1;

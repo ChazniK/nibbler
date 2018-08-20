@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Display.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckatz <ckatz@student.wethinkcode.co.za>    +#+  +:+       +#+        */
+/*   By: ckatz <ckatz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 13:08:26 by mafernan          #+#    #+#             */
-/*   Updated: 2018/08/19 11:32:28 by mafernan         ###   ########.fr       */
+/*   Updated: 2018/08/20 17:43:48 by ckatz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ Points	Display::getPoints(int x, int y)
 // second player snake
 void	Display::secondSnake(std::vector<Block> snake)
 {
-	glColor3f(0.0f, 0.5f, 0.0f);
+	glColor3f(0.5f, 0.4f, 0.0f);
 	glBegin(GL_QUADS);
 	body = getPoints(snake.begin()->x, snake.begin()->y);
 	glVertex2f(body.x0, body.y0);
@@ -117,7 +117,7 @@ void	Display::secondSnake(std::vector<Block> snake)
 	// ============= SNAKE BODY ============== //
 	for (auto section = snake.begin() + 1; section != snake.end();++section)
 	{
-		glColor3f(0.0f, 1.0f, 0.0f);
+		glColor3f(0.4f, 1.0f, 1.0f);
 		glBegin(GL_QUADS);
 		body = getPoints(section->x, section->y);
 		glVertex2f(body.x0, body.y0);
